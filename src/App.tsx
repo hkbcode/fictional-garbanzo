@@ -1,22 +1,38 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLaptopCode } from '@fortawesome/free-solid-svg-icons'
+import * as React from "react"
+import {
+  ChakraProvider,
+  Box,
+  Text,
+  Link,
+  VStack,
+  Code,
+  Grid,
+  theme,
+} from "@chakra-ui/react"
+import { ColorModeSwitcher } from "./ColorModeSwitcher"
+import { Logo } from "./Logo"
 
-
-function App() {
-  return (
-    <div style={{textAlign:"center",marginTop:100}}>
-
-    <h1> Build Apps with Reactjs <FontAwesomeIcon icon={faLaptopCode} /> </h1>
-    <br />
-    <br />
-      <Button variant="outline-primary">Reactjs</Button>
-      <p>+</p>
-      <Button variant="outline-dark">Bootstrap 4</Button>
-
-    </div>
-  );
-}
-
-export default App;
+export const App = () => (
+  <ChakraProvider theme={theme}>
+    <Box textAlign="center" fontSize="xl">
+      <Grid minH="100vh" p={3}>
+        <ColorModeSwitcher justifySelf="flex-end" />
+        <VStack spacing={8}>
+          <Logo h="40vmin" pointerEvents="none" />
+          <Text>
+            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
+          </Text>
+          <Link
+            color="teal.500"
+            href="https://chakra-ui.com"
+            fontSize="2xl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn Chakra
+          </Link>
+        </VStack>
+      </Grid>
+    </Box>
+  </ChakraProvider>
+)
